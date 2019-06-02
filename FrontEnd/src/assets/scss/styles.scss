@@ -1653,11 +1653,14 @@ time {
 /* -------------------------- reactDraftEditor.js -------------------------- */
 
 .ReactDraftEditor {
+  button {
+    margin: auto;
+  }
   .md-RichEditor-root {
     background-color: $Light;
     border: 1px solid $Dark;
     border-radius: 4px;
-
+    margin-bottom: 1em;
     .md-side-toolbar {
       left: -70px;
     }
@@ -1676,6 +1679,7 @@ time {
   }
   .md-sb-button {
     background-color: $Light;
+    margin-right: 2px;
   }
 }
 

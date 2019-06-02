@@ -16,7 +16,6 @@ import { editIdea, fetchIdea } from './../../actions/ideas.actions'
 import { getIdea, getFetchIdeaStatus, getIdeaSubmitStatus } from './../../reducers/ideas.reducer'
 import { getUser } from './../../reducers/user.reducer'
 // Components
-import ReactQuillEditor from './../global/components/reactQuillEditor'
 import ReactDraftEditor from './../global/components/reactDraftEditor'
 
 class NewIdeaPage extends React.Component {

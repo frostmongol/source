@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import Icon from 'react-icons-kit'
 import { image } from 'react-icons-kit/iconic/image'
 import { video } from 'react-icons-kit/iconic/video'
+import Button from '@material-ui/core/Button'
 
 import mediumDraftExporter from 'medium-draft/lib/exporter'
 
@@ -122,10 +123,10 @@ class CustomVideoSideButton extends ImageSideButton {
 class ReactDraftEditor extends React.Component {
   constructor (props) {
     super(props)
-
     this.state = {
       editorState: createEditorState() // for empty content
     }
+    this.submit = this.submit.bind(this)
 
     /*
     this.state = {
@@ -146,7 +147,13 @@ class ReactDraftEditor extends React.Component {
       const contentState = editorState.getCurrentContent()
       this.setState({ editorState })
       this.setState({ editorHTML: this.exportHTML(contentState) })
-      this.setState({ stringBody: contentState().convertToRaw() })
+      this.setState({ stringBody: contentState.getPlainText() })
+    }
+  }
+
+  submit () {
+    if (this.state.stringBody !== '') {
+      this.props.submit(this.state.editorHTML, this.state.stringBody)
     }
   }
 
@@ -156,7 +163,6 @@ class ReactDraftEditor extends React.Component {
 
   exportHTML (contentState) {
     const renderedHTML = mediumDraftExporter(contentState)
-    console.log(this.state)
     return renderedHTML
   }
 
@@ -169,13 +175,9 @@ class ReactDraftEditor extends React.Component {
           editorState={editorState}
           onChange={this.onChange}
           sideButtons={this.sideButtons}
+          placeholder={this.placeholder}
         />
-        { /* Replace with submit button */ }
-        <button
-          onClick={() => this.exportHTML()}
-        >
-          Export HTML
-        </button>
+        <Button variant="contained" color="primary" onClick={this.submit}>Create Idea</Button>
       </div>
     )
   }

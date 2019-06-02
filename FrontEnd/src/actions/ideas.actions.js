@@ -77,8 +77,7 @@ export function newIdea (idea) {
     axios.post(`${config.production_url}/api/ideas/new`, {
       title: idea.ideaTitle,
       body: idea.body,
-      tags: idea.topics,
-      projectID: idea.projectID,
+      description: idea.description,
       stringBody: idea.stringBody,
       token
     })
